@@ -1,8 +1,19 @@
 from typing import List, Tuple
 
 def get_neighbours(matrix: List[List[int]], row: int, col: int) -> List[int]:
-    # Здесь реализация вашего решения
-    pass
+    nbrs = []
+    if row>=1:
+        nbrs.append(matrix[row-1][col])
+    if col>=1:
+        nbrs.append(matrix[row][col-1])
+    if row <= len(matrix)-2:
+        nbrs.append(matrix[row+1][col])
+    if col <= len(matrix[0])-2:
+        nbrs.append(matrix[row][col+1])
+        
+    
+    return sorted(nbrs)
+        
 
 def read_input() -> Tuple[List[List[int]], int, int]:
     n = int(input())

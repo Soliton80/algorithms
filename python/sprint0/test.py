@@ -23,7 +23,7 @@ print(maxvalue(alist))
 alist1 = list(alist)
 alist2 = alist[::]
 alist3 = alist.copy()
-# alist3.sort()
+alist3.sort()
 print(alist3)
 
 
