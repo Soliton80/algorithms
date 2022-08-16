@@ -1,0 +1,39 @@
+test_file = open('python/sprint1_nonfinals/input.txt')
+def input() -> str:
+    return test_file.readline()
+
+from typing import List, Tuple
+
+def get_distance(number_list: List[int], n: int) -> List[int]:
+    distances = []
+    
+    for i in range(n):
+        if number_list[i]==0:
+            distances.append(0)
+            continue
+        count = 0
+        ldist = n+1
+        for l in range(i, 0, -1):
+            count += 1
+            if number_list[l-1]==0:
+                ldist = count
+                break
+        count = 0
+        rdist = n+1
+        for r in range(i, n-1):
+            count += 1
+            if number_list[r+1]==0:
+                rdist = count
+                break
+        distances.append(min(ldist, rdist))
+    return distances
+
+
+def read_input() -> Tuple[List[int], int]:
+    n = int(input())
+    number_list = list(map(int, input().strip().split()))
+    return  n, number_list
+
+n, number_list = read_input()
+
+print(" ".join(map(str, get_distance(number_list, n))))
